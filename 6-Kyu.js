@@ -7,18 +7,17 @@ let shoes = [
 ];
 
 function pairOfShoes(shoes) {
-        let shoesHasMatch = false;
-        let shoeThatMatches;
-        let newArray;
+    let shoeHasMatch = false;
+    let shoeThatMatches;
+    let newArray;
     for (let i = 1; i < shoes.length; i++) {
         if (shoes[i][1] === shoes [0][1]) {
-            if (shoes[i][0] === shoes[0][0]) {
-                shoesHasMatch = true;
+            if (shoes[i][0] !== shoes[0][0]) {
+                shoeHasMatch = true;
                 shoes.splice(i, 1);
                 shoes.splice(0, 1);
-                return pairOfShoes(shoes);
             }
         }
     }
-    return shoesHasMatch;
+    return shoes.length < 2 || !shoeHasMatch ? shoeHasMatch : pairOfShoes(shoes);
 }
